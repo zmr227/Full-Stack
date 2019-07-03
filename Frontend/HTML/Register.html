@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Register Form</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <form method="GET">
+        <!-- Name -->
+        <div>
+            <label for="first">First Name:</label>
+            <input id="first" name="firstName" type="text" required>
+
+            <label for="last">Last Name:</label>
+            <input id="last" name="lastName" type="text" required>
+        </div>
+
+        <!-- Radio Button  -->
+        <div>
+            <label> Male
+                <input type="radio" name="gender" value="male">
+            </label>
+            <label>Female
+                <input type="radio" name="gender" value="female">
+            </label>
+            <label>Other
+                <input type="radio" name="gender" value="other">
+            </label>
+        </div>
+
+        <!-- Login Info-->
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="pass">Password:</label>
+            <input type="password" id="pass" pattern=".{5,10}" required title="5 to 10 characters">
+        </div>
+
+        <!-- Birthday -->
+        <div>
+            <label>Birthday:
+                <select name="year">
+                    <!-- placeholder -->
+                    <option value="0" selected disabled>Year</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                </select>
+                <select name="month">
+                    <option value="0" selected disabled>Month</option>
+                    <option value="Jan">Jan</option>
+                    <option value="May">May</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Dec">Dec</option>
+                </select>
+                <select name="day">
+                    <option value="0" selected disabled>Day</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- Term and Condition -->
+        <div>
+            <label>I agree to the terms and conditions.
+                <input type="checkbox" name="agree">
+            </label>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+
+</html>
