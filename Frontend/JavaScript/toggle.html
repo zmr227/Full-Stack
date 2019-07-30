@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toggle Background</title>
+</head>
+
+<body>
+    <style>
+        .bg-purple {
+            background: purple;
+        }
+    </style>
+    <button id="bg-toggle-btn" class="">Click Me</button>
+    <script>
+        var btn = document.getElementById("bg-toggle-btn");
+        var isPurple = false;
+        // btn.addEventListener("click", function() {
+        //     if (isPurple) {
+        //         document.body.style.background = "white";
+        //     } else {
+        //         document.body.style.background = "purple";
+        //     }
+        //     isPurple = !isPurple;
+        // });
+        btn.addEventListener("click", function() {
+            document.body.classList.toggle("bg-purple");
+        })
+    </script>
+</body>
+
+</html>
