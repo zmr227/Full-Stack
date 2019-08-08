@@ -1,0 +1,23 @@
+body {
+    background: gray;
+}
+
+.square {
+    background: blue;
+    width: 30%;
+    padding-top: 30%;
+    margin: 1.66%;
+    float: left;
+    border-radius: 10%;
+}
+
+#container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#stripe {
+    background: white;
+    text-align: center;
+    height: 30px;
+}
