@@ -1,29 +1,84 @@
-var colors = generateRandomColors(6);
+// number of squares/colors
+var num_square = 6;
+var colors = []; //generateRandomColors(num_square);
+var picked_color;
 
 var h1 = document.querySelector("h1");
 var squares = document.querySelectorAll(".square");
 var color_to_guess = document.getElementById("color_to_guess");
 var msg_display = document.querySelector("#msg_display");
 
-var picked_color = pickColor();
+var reset_btn = document.querySelector("#reset");
+var mode_btns = document.querySelectorAll(".mode");
+
+init();
+
+function init() {
+    setupModeBtn();
+    setupSquares();
+    reset();
+}
+
+function setupModeBtn() {
+    //  mode button event listeners
+    for (var i = 0; i < mode_btns.length; i++) {
+        mode_btns[i].addEventListener("click", function() {
+            // remove all
+            mode_btns[0].classList.remove("selected");
+            mode_btns[1].classList.remove("selected");
+            // select current btn
+            this.classList.add("selected");
+            this.textContent === "Easy" ? num_square = 3 : num_square = 6;
+            reset();
+        });
+    }
+}
+
+function setupSquares() {
+    for (var i = 0; i < squares.length; i++) {
+        // always use backgroundColor instead of background, the latter might not work in some browsers
+        // add click listeners
+        squares[i].addEventListener("click", function() {
+            if (this.style.backgroundColor == picked_color) {
+                changeAllColor(picked_color);
+                h1.style.backgroundColor = picked_color;
+                msg_display.textContent = "Correct!";
+                reset_btn.textContent = "Play Again?";
+
+            } else {
+                this.style.backgroundColor = "white";
+                msg_display.textContent = "Try Again";
+            }
+        });
+    }
+}
+
 color_to_guess.textContent = picked_color;
 
-var reset_btn = document.querySelector("#reset");
-reset_btn.addEventListener("click", function() {
+reset_btn.addEventListener("click", reset);
+
+function reset() {
     // reset message and h1 background
     msg_display.textContent = "";
-    h1.style.backgroundColor = "gray";
+    h1.style.backgroundColor = "skyblue";
 
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(num_square);
     picked_color = pickColor();
     color_to_guess.textContent = picked_color;
 
     // set colors to each square
     for (var i = 0; i < squares.length; i++) {
-        squares[i].style.backgroundColor = colors[i];
+        if (colors[i]) {
+            squares[i].style.display = "block";
+            squares[i].style.backgroundColor = colors[i];
+        } else {
+            squares[i].style.display = "none";
+        }
+
     }
     reset_btn.textContent = "New Colors";
-});
+}
+
 
 // generate random color
 function getRandomColor() {
@@ -56,25 +111,4 @@ function changeAllColor(color) {
     for (var i = 0; i < colors.length; i++) {
         squares[i].style.backgroundColor = color;
     }
-}
-
-
-for (var i = 0; i < squares.length; i++) {
-    // always use backgroundColor instead of background, the latter might not work in some browsers
-    squares[i].style.backgroundColor = colors[i];
-
-    // add click listeners
-    squares[i].addEventListener("click", function() {
-        if (this.style.backgroundColor == picked_color) {
-            changeAllColor(picked_color);
-            h1.style.backgroundColor = picked_color;
-            msg_display.textContent = "Correct!";
-            reset_btn.textContent = "Play Again?";
-
-        } else {
-            this.style.backgroundColor = "gray";
-            msg_display.textContent = "Try Again";
-        }
-    });
-
 }
