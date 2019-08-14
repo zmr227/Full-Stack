@@ -22,8 +22,12 @@ $("input[type='text']").keypress(function(event){
     if (event.which === 13) {
         var todo = $(this).val();
         $(this).val("");
-        $("ul").append("<li> <span>X</span> " + todo + "</li>");
+        $("ul").append("<li> <span><i class='fa fa-trash'></i></span> " + todo + "</li>");
 
         console.log(todo);
     }
 });
+
+$(".fa-plus-circle").click(function(){
+    $("input[type='text']").fadeToggle();
+})

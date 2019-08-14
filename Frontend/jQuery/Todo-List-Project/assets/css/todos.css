@@ -1,13 +1,22 @@
 body{
     font-family: sans-serif;
+    background: #BE93C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 h1{
     background: lightcoral;
     color: #2a2a2a;
     text-transform: uppercase;
-    padding: 10px 20px;
+    padding: 20px 10px 15px 30px;
     
+}
+
+.fa-plus-circle {
+    float: right;
+    margin-right: 20px;
 }
 
 input{
@@ -17,11 +26,12 @@ input{
     width: 100%;
     padding: 13px 13px 13px 20px;
     box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
 }
 
 input:focus{
     outline: none;
-    border: 2px solid lightcoral;
+    border: 3px solid lightcoral;
     background: #fff;
 }
 
@@ -30,6 +40,18 @@ ul{
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+span{
+    background: #e74c3c;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    width: 0;
+    transition: 0.2s linear;
+    opacity: 0;
 }
 
 li{
@@ -41,6 +63,11 @@ li{
 
 li:nth-child(2n){
     background: #f7f7f7;
+}
+
+li:hover span{
+    width: 40px;
+    opacity: 1;
 }
 
 #container{
